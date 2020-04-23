@@ -1,11 +1,9 @@
 image: starefossen/ruby-node:latest
 
-pages:
+deploy:
   script:
     - yarn install
     - yarn build
     - bundle install
-    - bundle exec jekyll build -d public
-  artifacts:
-    paths:
-      - public
+    - bundle exec jekyll build
+    - node_modules/.bin/surge ./_site
