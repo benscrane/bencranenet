@@ -1,0 +1,12 @@
+---
+title: Writers
+permalink: /writers
+layout: base
+---
+<h1>Writers</h1>
+
+<ul>
+    {% for writer in site.writers %}
+        <li><a href="{{ writer.url }}">{{ writer.name }}</a></li>
+    {% endfor %}
+</ul>

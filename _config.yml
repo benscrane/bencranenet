@@ -11,8 +11,26 @@ social:
   links:
     - https://twitter.com/joeybeninghove
 
-permalink: /:title/
+# permalink: /:title/
 excerpt_separator: <!--more-->
+
+collections_dir: collections
+
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:title
+  writers:
+    output: true
+    people: true
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
 
 include:
   - _redirects
