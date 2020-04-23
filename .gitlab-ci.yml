@@ -7,3 +7,5 @@ deploy:
     - bundle install
     - bundle exec jekyll build
     - node_modules/.bin/surge ./_site
+  only:
+    - master
