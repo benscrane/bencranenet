@@ -1,3 +1,5 @@
+image: starefossen/ruby-node:latest
+
 pages:
   script:
     - yarn install
