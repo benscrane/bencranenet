@@ -28,9 +28,20 @@ defaults:
   -
     scope:
       path: ""
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
       type: "posts"
     values:
       layout: "post"
+  -
+    scope:
+      path: ""
+      type: "writers"
+    values:
+      layout: "writer"
 
 include:
   - _redirects
