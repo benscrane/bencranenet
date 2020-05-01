@@ -2,6 +2,7 @@
 title: Ben
 name: Ben Crane
 short_name: ben
+position: 
 ---
 
-Testing
+Any sort of bio/background here.

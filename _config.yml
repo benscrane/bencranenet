@@ -12,6 +12,7 @@ collections:
   writers:
     output: true
     people: true
+    permalink: /:collection/:title
 
 defaults:
   -

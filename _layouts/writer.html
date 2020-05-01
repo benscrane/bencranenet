@@ -2,6 +2,21 @@
 layout: base
 ---
 <div class="w-full md:w-4/5 lg:w-3/5 mx-auto">
-    <p class="font-bold text-4xl pb-6">{{ page.name}}</p>
+    <div class="pb-6">
+        <p class="font-bold text-4xl">{{ page.name}}</p>
+        {% if page.position %}
+            <p class="text-gray-700">{{ page.position }}</p>
+        {% endif %}
+    </div>
     {{ content }}
+
+    <h2 class="text-xl font-semibold pt-5 mt-4">Posts</h2>
+    {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
+    {% for post in filtered_posts %}
+        <div class="py-4">
+            <p class="text-blue-700 text-lg font-semibold"><a href="{{ post.url }}">{{ post.title }}</a></p>
+            <p class="text-sm">{{ post.date | date_to_long_string }}</p>
+            <p class="">{{ post.excerpt }}</p>
+        </div>
+    {% endfor %}
 </div>

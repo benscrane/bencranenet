@@ -8,22 +8,20 @@ permalink: /blog
     <!-- <p class="font-bold text-4xl">Most Recent</p>
     <hr> -->
 {% for post in site.posts %}
-    <div>
-        <div class="py-4">
-            <p class="font-semibold">{{ post.date | date_to_long_string }}</p>
-            <p class="text-blue-700 text-3xl font-bold"><a href="{{ post.url }}">{{ post.title }}</a></p>
-            <hr class="w-4/5 mx-auto b-3">
-            {% assign author = site.writers | where: 'short_name', post.author | first %}
-            {% if author %}
-                <p class="italic pb-3">{{ author.name }}</p>
-            {% endif %}
-            <p class="pb-3">{{ post.excerpt }}</p>
-            <a
-                href="{{ post.url }}"
-                class="text-green-700 hover:text-white font-semibold py-2 px-4 border rounded border-green-700 hover:bg-green-700 hover:border-transparent">
-                    Read
-            </a>
-        </div>
+    <div class="py-4">
+        <p class="font-semibold">{{ post.date | date_to_long_string }}</p>
+        <p class="text-blue-700 text-3xl font-bold"><a href="{{ post.url }}">{{ post.title }}</a></p>
+        <hr class="w-4/5 mx-auto b-3">
+        {% assign author = site.writers | where: 'short_name', post.author | first %}
+        {% if author %}
+            <p class="italic pb-3">{{ author.name }}</p>
+        {% endif %}
+        <p class="pb-3">{{ post.excerpt }}</p>
+        <a
+            href="{{ post.url }}"
+            class="text-green-700 hover:text-white font-semibold py-2 px-4 border rounded border-green-700 hover:bg-green-700 hover:border-transparent">
+                Read
+        </a>
     </div>
 {% endfor %}
 </div>
