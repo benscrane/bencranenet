@@ -5,10 +5,9 @@ permalink: /blog
 ---
 
 <div class="w-full md:w-4/5 lg:w-3/5 mx-auto">
-    <p class="font-bold text-4xl">Most Recent</p>
-    <hr>
+    <!-- <p class="font-bold text-4xl">Most Recent</p>
+    <hr> -->
 {% for post in site.posts %}
-    <p><a href="{{  post.url }}">{{ post.title }}</a></p>
     <div>
         <div class="py-4">
             <p class="font-semibold">{{ post.date | date_to_long_string }}</p>

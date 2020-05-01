@@ -9,5 +9,7 @@ layout: base
     {% else %}
         <p class="pb-4 text-gray-600 text-sm">{{ page.date | date_to_string}}</p>
     {% endif %}
-    {{ content }}
+    <div class="blog-markdown">
+        {{ content }}
+    </div>
 </div>

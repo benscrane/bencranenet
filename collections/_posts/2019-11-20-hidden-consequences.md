@@ -1,7 +1,7 @@
 ---
 title: Hidden Consequences
 author: ben
-excerpt: How our tools hide the real impact of our actions from us.
+excerpt: How our tools hide the real impact of our actions from us
 ---
 
 Tools often add a layer of abstraction between their users and the task getting done at the ground level.  Abstractions are incredibly useful and much of what exists in the modern world wouldn't be possible without them.  
@@ -13,12 +13,6 @@ The biggest negative consequence I can think of is the impact on how we consume 
 If I had to pull up my own water from a well or carry it from a river I would be a lot more conscious of how much I used.  Modern city water systems are almost certainly a good thing but they lead to the unintended consequence of people leaving the faucet running because they're further away from the impact of their consumption and the water appears to flow out of the pipes infinitely.
 
 If I grew my own vegetables or collected eggs from my own chickens, I'm sure I wouldn't throw as much of either away after realizing I'd left them sitting in the refridgerator for 2 weeks.  Our modern agriculture and food systems are clearly needed but it's equally clear that they've introduced a huge amount of food waste.
-
-```
-export const testFunc = () => {
-    return 'how do I look?';
-}
-```
 
 If my house was illuminated with candles instead of lightbulbs I imagine I'd be much better about turning the "lights" off in rooms every time I left them.  Watching the candle melt and shrink in size is a very tangible representation of what's being consumed; I hardly even think about the lightbulbs in my house that I have to change only once a year or so.  These days, with the help of Alexa, I don't even have to physically flip a switch in some of my rooms.  I just speak and there is light, like some kind of environmentally irresponsible diety.  
 
