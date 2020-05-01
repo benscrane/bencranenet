@@ -1,18 +1,7 @@
 title: Animals and Amplifiers
-description: Jekyll Starter Kit
-url: https://joey.io
-author: joeybeninghove
-twitter:
-  username: joeybeninghove
-  card: summary
-logo: /assets/logo.png
-social:
-  name: Joey Beninghove
-  links:
-    - https://twitter.com/joeybeninghove
-
-# permalink: /:title/
-excerpt_separator: <!--more-->
+description: Animals and Amplifiers
+url: https://animalsandamplifiers.surge.sh
+author: Fauve
 
 collections_dir: collections
 
