@@ -3,10 +3,13 @@ title: Writers
 permalink: /writers
 layout: base
 ---
-<h1>Writers</h1>
 
-<ul>
-    {% for writer in site.writers %}
-        <li><a href="{{ writer.url }}">{{ writer.name }}</a></li>
-    {% endfor %}
-</ul>
+<div class="w-full md:w-4/5 lg:w-3/5 mx-auto">
+    <h1 class="text-2xl font-semibold pb-5">Writers</h1>
+
+    <ul>
+        {% for writer in site.writers %}
+            <li class="pb-3 font-medium text-lg"><a href="{{ writer.url }}">{{ writer.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
