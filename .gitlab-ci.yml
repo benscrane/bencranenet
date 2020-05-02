@@ -8,6 +8,6 @@ deploy:
     - bundle exec jekyll build
     - yarn build
     - bundle exec jekyll build
-    - node_modules/.bin/surge ./_site
+    - node_modules/.bin/now ./_site --confirm --prod --token=$NOW_TOKEN
   only:
     - master

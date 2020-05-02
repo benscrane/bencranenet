@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "scope": "fauve",
     "routes": [
         {"handle": "filesystem"},
         {"src": "/.*", "status": 404, "dest": "404.html"}
