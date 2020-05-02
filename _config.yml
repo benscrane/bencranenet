@@ -8,11 +8,11 @@ collections_dir: collections
 collections:
   posts:
     output: true
-    permalink: /blog/:year/:title
+    permalink: /blog/:year/:title:output_ext
   writers:
     output: true
     people: true
-    permalink: /:collection/:title
+    permalink: /:collection/:title:output_ext
 
 defaults:
   -
