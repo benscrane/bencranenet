@@ -1,7 +1,7 @@
-title: Animals and Amplifiers
-description: Animals and Amplifiers
+title: Ben Crane
+description: 
 url: https://animalsandamplifiers.surge.sh
-author: Fauve
+author: Ben Crane
 
 collections_dir: collections
 
@@ -9,9 +9,8 @@ collections:
   posts:
     output: true
     permalink: /blog/:year/:title:output_ext
-  writers:
+  projects:
     output: true
-    people: true
     permalink: /:collection/:title:output_ext
 
 defaults:
@@ -30,9 +29,9 @@ defaults:
   -
     scope:
       path: ""
-      type: "writers"
+      type: "projects"
     values:
-      layout: "writer"
+      layout: "project"
 
 include:
   - _redirects

@@ -5,6 +5,9 @@
 .blog-markdown p {
     @apply mt-4;
 }
+.blog-markdown h1 {
+    @apply text-4xl mt-8;
+}
 .blog-markdown h2 {
     @apply text-3xl mt-8;
 }

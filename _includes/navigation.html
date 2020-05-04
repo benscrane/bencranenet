@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between flex-wrap p-4 mb-4 border-b flex-shrink-0" data-controller="navigation">
     <div class="flex items-center flex-shrink-0 mr-6">
-        <a href="/" class="font-semibold text-xl tracking-tight">{{ site.title }}</a>
+        <!-- <a href="/" class="font-semibold text-xl tracking-tight">{{ site.title }}</a> -->
     </div>
 
     <div class="block lg:hidden">
@@ -11,15 +11,18 @@
 
     <div class="w-full hidden block lg:flex lg:items-center lg:w-auto" data-target="navigation.navGroup">
         <div class="text-sm lg:flex-grow">
+            <a href="/" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                Home
+            </a>
             <a href="/blog.html" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
                 Blog
             </a>
-            <a href="/writers.html" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
-                Writers
+            <a href="/projects.html" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                Projects
             </a>
-            <!-- <a href="/about" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
-                About
-            </a> -->
+            <a href="/contact.html" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                Contact
+            </a>
         </div>
     </div>
 </nav>
