@@ -12,6 +12,8 @@ collections:
   projects:
     output: true
     permalink: /:collection/:title:output_ext
+    order:
+      - task_escalator.md
 
 defaults:
   -

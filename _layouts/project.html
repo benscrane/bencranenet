@@ -9,16 +9,4 @@ layout: base
         {% endif %}
     </div>
     {{ content }}
-
-    {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
-    {% if filtered_posts.size > 0 %}
-        <h2 class="text-xl font-semibold pt-5 mt-4">Posts</h2>
-    {% endif %}
-    {% for post in filtered_posts %}
-        <div class="py-4">
-            <p class="text-blue-700 text-lg font-semibold"><a href="{{ post.url }}">{{ post.title }}</a></p>
-            <p class="text-sm">{{ post.date | date_to_long_string }}</p>
-            <p class="">{{ post.excerpt }}</p>
-        </div>
-    {% endfor %}
 </div>

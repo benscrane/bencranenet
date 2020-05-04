@@ -6,4 +6,10 @@ layout: base
 
 <div class="w-full md:w-4/5 lg:w-3/5 mx-auto">
     <h1 class="text-2xl font-semibold pb-5">Projects</h1>
+
+    <div class="flex flex-wrap">
+        {% for project in site.projects %}
+            <div class="w-1/2 p-2">{{ project.name }}</div>
+        {% endfor %}
+    </div>
 </div>
