@@ -111,7 +111,8 @@ function probabilityUnion(prob, numRolls, numPlayers) {
     if (numPlayers === 1) {
         return Math.pow(prob, numRolls);
     } else {
-        return Math.pow(prob, numRolls) + probabilityUnion(prob, numRolls, numPlayers - 1) - (Math.pow(prob, numRolls) * probabilityUnion(prob, numRolls, numPlayers -1));
+        return Math.pow(prob, numRolls) + probabilityUnion(prob, numRolls, numPlayers - 1) -
+            (Math.pow(prob, numRolls) * probabilityUnion(prob, numRolls, numPlayers -1));
     }
 }
 ```
