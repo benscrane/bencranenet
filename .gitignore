@@ -5,5 +5,5 @@
 /assets
 yarn-error.log
 .jekyll-cache/
-
+**/*/.env
 .now
