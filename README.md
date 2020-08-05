@@ -1,4 +1,8 @@
-# jekyll-fun
+# Personal Site
+
+## Setup
+
+1. yarn dev/build
 
 In kind of a spin-off of [fun](https://github.com/joeybeninghove/fun), this is a
 [Jekyll](https://jekyllrb.com/) starter kit that can be used to quickly build
