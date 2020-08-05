@@ -12,4 +12,6 @@ RUN apk update\
     && apk add --no-cache curl ca-certificates \
     && curl -sSL ${INSTALL_SCRIPT_SOURCE} -o /tmp/install.sh \
     && if [ "$INSTALL_SCRIPT_SHA" != "dev-mode" ]; then echo "$INSTALL_SCRIPT_SHA" */tmp/install.sh | sha256sum-c -; fi \
-    && /bin/ash tmp/install.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}"
+    && /bin/ash tmp/install.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" \
+    && apk add yarn \
+    && yarn install
