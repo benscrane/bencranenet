@@ -14,4 +14,5 @@ RUN apk update\
     && if [ "$INSTALL_SCRIPT_SHA" != "dev-mode" ]; then echo "$INSTALL_SCRIPT_SHA" */tmp/install.sh | sha256sum-c -; fi \
     && /bin/ash tmp/install.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" \
     && apk add yarn \
-    && yarn install
+    && yarn install \
+    && apk add ruby
