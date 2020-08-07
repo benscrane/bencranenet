@@ -1,7 +1,7 @@
 ---
 layout: base
-title: Blog
-permalink: /blog.html
+title: Writing
+permalink: /writing.html
 ---
 
 <div class="w-full md:w-4/5 lg:w-3/5 mx-auto">
@@ -9,19 +9,19 @@ permalink: /blog.html
     <hr> -->
 {% for post in site.posts %}
     <div class="py-4">
-        <p class="font-semibold">{{ post.date | date_to_long_string }}</p>
-        <p class="text-blue-700 text-3xl font-bold"><a href="{{ post.url }}">{{ post.title }}</a></p>
-        <hr class="w-4/5 mx-auto b-3">
+        <p class="font-normal">{{ post.date | date_to_long_string }}</p>
+        <p class="text-blue-700 text-2xl font-medium"><a href="{{ post.url }}">{{ post.title }}</a></p>
+        <!-- <hr class="w-4/5 mx-auto b-3"> -->
         {% assign author = site.writers | where: 'short_name', post.author | first %}
         {% if author %}
             <p class="italic pb-3">{{ author.name }}</p>
         {% endif %}
         <p class="pb-3">{{ post.excerpt }}</p>
-        <a
+        <!-- <a
             href="{{ post.url }}"
             class="text-green-700 hover:text-white font-semibold py-2 px-4 border rounded border-green-700 hover:bg-green-700 hover:border-transparent">
                 Read
-        </a>
+        </a> -->
     </div>
 {% endfor %}
 </div>

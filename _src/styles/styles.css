@@ -35,4 +35,33 @@
 .blog-markdown .badge {
     @apply inline m-0 align-middle;
 }
+
+.hamburger {
+    margin: 1em;
+    width: 40px;
+}
+
+.hamburger:after,
+.hamburger:before,
+.hamburger div {
+    background-color: #000;
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: 5px;
+    margin: 7px 0;
+    transition: all .2s ease-in-out;
+}
+
+.hamburger.active div {
+    transform: scale(0);
+}
+
+.hamburger.active:before {
+    transform: rotate(45deg) translateY(12px);
+}
+
+.hamburger.active:after {
+    transform: rotate(-45deg) translateY(-12px);
+}
 /* purgecss end ignore */

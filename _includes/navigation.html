@@ -1,23 +1,26 @@
-<nav class="flex items-center justify-between flex-wrap p-4 mb-4 border-b flex-shrink-0" data-controller="navigation">
+<nav class="flex items-center justify-between flex-wrap px-4 pt-4 mb-4 flex-shrink-0" data-controller="navigation" data-target="navigation.navBar">
     <div class="flex items-center flex-shrink-0 mr-6">
-        <!-- <a href="/" class="font-semibold text-xl tracking-tight">{{ site.title }}</a> -->
+        <a href="/" class="font-normal text-lg tracking-tight">{{ site.title }}</a>
     </div>
 
     <div class="block lg:hidden">
         <button class="flex items-center px-3 py-2" data-action="click->navigation#showNav">
             <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+            <!-- <div class="hamburger" data-target="navigation.hamburger">
+                <div></div>
+            </div> -->
         </button>
     </div>
 
-    <div class="w-full hidden block lg:flex lg:items-center lg:w-auto" data-target="navigation.navGroup">
+    <div class="w-full hidden block lg:flex lg:items-center lg:w-auto lg:py-2" data-target="navigation.navGroup">
         <div class="text-sm lg:flex-grow">
-            <a href="/" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            <a href="/" class="block py-2 lg:inline-block lg:mt-0 mr-4">
                 Home
             </a>
-            <a href="/blog.html" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
-                Blog
+            <a href="/writing.html" class="block py-2 lg:inline-block lg:mt-0 mr-4">
+                Writing
             </a>
-            <a href="/projects.html" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            <a href="/projects.html" class="block py-2 lg:inline-block lg:mt-0 mr-4">
                 Projects
             </a>
         </div>

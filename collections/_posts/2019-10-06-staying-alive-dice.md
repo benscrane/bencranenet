@@ -4,6 +4,7 @@ date: 2019-10-06 00:00:00
 tags:
     - Probability
     - JavaScript
+excerpt: Using math to win at gambling
 ---
 <!--more-->
 # Staying Alive in Dice with JS
