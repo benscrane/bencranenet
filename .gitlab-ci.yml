@@ -1,0 +1,13 @@
+image: starefossen/ruby-node:latest
+
+deploy:
+  script:
+    - yarn install
+    - yarn build
+    - bundle install
+    - bundle exec jekyll build
+    - yarn build
+    - bundle exec jekyll build
+    - netlify --dir ./_site --prod --auth $NETLIFY_AUTH_TOKEN
+  only:
+    - master
