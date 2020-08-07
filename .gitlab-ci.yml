@@ -4,10 +4,10 @@ deploy:
   script:
     - node --version
     - npm install
-    - npm build
+    - npm run build
     - bundle install
     - bundle exec jekyll build
-    - npm build
+    - npm run build
     - bundle exec jekyll build
     - netlify --dir ./_site --prod --auth $NETLIFY_AUTH_TOKEN
   only:
