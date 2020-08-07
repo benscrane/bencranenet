@@ -1,4 +1,4 @@
-image: starefossen/ruby-node:latest
+image: timbru31/ruby-node:2.7
 
 deploy:
   script:
