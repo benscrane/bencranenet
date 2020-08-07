@@ -15,4 +15,9 @@ RUN apk update\
     && /bin/ash tmp/install.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" \
     && apk add yarn \
     && yarn install \
-    && apk add ruby
+    && apk add ruby ruby-bigdecimal ruby-irb less libressl \
+    && apk add build-base ruby-dev libressl-dev \
+    && gem install bundler:1.17.3 \
+    && bundle config build.nokogiri --use-system-libraries \
+    && gem install json \
+    && gem cleanup
