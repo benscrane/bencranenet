@@ -2,6 +2,7 @@ image: starefossen/ruby-node:latest
 
 deploy:
   script:
+    - node --version
     - yarn install
     - yarn build
     - bundle install
