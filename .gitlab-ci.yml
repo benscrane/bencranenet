@@ -3,12 +3,12 @@ image: timbru31/ruby-node:2.7
 deploy:
   script:
     - node --version
-    - npm install
-    - npm run build
+    - yarn install
+    - yarn build
     - bundle install
     - bundle exec jekyll build
-    - npm run build
+    - yarn build
     - bundle exec jekyll build
-    - npx netlify-cli deploy --dir ./_site --prod --auth $NETLIFY_AUTH_TOKEN
+    - yarn deploy
   only:
     - master

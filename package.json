@@ -29,7 +29,8 @@
   },
   "scripts": {
     "dev": "webpack --mode development --watch --env.NODE_ENV=development",
-    "build": "webpack --mode production  --env.NODE_ENV=production"
+    "build": "webpack --mode production  --env.NODE_ENV=production",
+    "deploy": "netlify deploy --dir ./_site --prod --auth $NETLIFY_AUTH_TOKEN"
   },
   "dependencies": {
     "turbolinks": "^5.2.0"
