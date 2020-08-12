@@ -24,10 +24,10 @@ out a production-ready Jekyll static site.
 * [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) for generating a
     sitemap
 
-## Setup
+## Installation and Setup
 
 1. `bundle install`
-2. `yarn install`
+2. `npm install`
 
 ## Directory Structure
 

@@ -3,12 +3,12 @@ image: timbru31/ruby-node:2.7
 deploy:
   script:
     - node --version
-    - yarn install
-    - yarn build
+    - npm install
+    - npm run build
     - bundle install
     - bundle exec jekyll build
-    - yarn build
+    - npm run build
     - bundle exec jekyll build
-    - yarn deploy
+    - npm run deploy
   only:
     - master
