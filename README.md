@@ -48,3 +48,26 @@ Alternatively, if you have [foreman] installed, you can `foreman start` and both
 When Webpack runs, it compiles all of the assets into the `/assets` directory
 and then generates the base layout to `_layouts/base.html` with the appropriate
 `<link>` and `<script>` tags injected into it.
+
+----
+# Personal Site
+
+My personal projects and writings.  Curently lives at bencrane.net.
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+
+```bash
+pip install foobar
+```
+
+## Usage
+
+```python
+import foobar
+
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
