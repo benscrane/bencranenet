@@ -19,14 +19,23 @@ the multihoming approach and define some clear guidelines on what goes into
 GitHub and what goes into GitLab.  This post is me forcing myself to write 
 those guidelines down.
 
+## Why I use GitLab
+
 ## Why I use GitHub
 
-## Why I use GitLab
+GitHub is a social platform for developers.  It's also a great place to host 
+your with a rich SDLC feature set.  For me though, I prefer the features at 
+GitLab which is why GitLab is the main home for my active projects.  But I 
+think there's a lot of value for having a strong GitHub presence as a 
+developer.  
+
+Almost all of the software development job applications that I've seen have a 
+field to include your GitHub profile link or username.  I'm sure you can 
+include a GitLab link there or elsewhere in your application but it just 
+illustrates that GitHub is the default.
+
+Opensource
 
 ## Repo mirroring
 
-What I'm using and why.  I'm writing this for myself, it's helpful to define a way of working and stick to it, especially when working on your own.
-
-Document how I'm setting up GitLab - GitHub mirroring and how I decide which one is the home base for a specific project.
-
-This will be a good push to clean up both of those accounts.
+This is a living document and I'll be updating it as my approach evolves.

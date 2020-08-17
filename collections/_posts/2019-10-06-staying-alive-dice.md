@@ -69,7 +69,7 @@ P(54) is still equal to 0.5 and the intersection of two P(54) events is 0.25, as
 
 ![equation](https://latex.codecogs.com/svg.latex?P%2854%20%5Ccup%2054%29%20%3D%200.5%20&plus;%200.5%20-%200.25%20%3D%200.75)
 
-With two players behind us and only one roll allowed, the probability that our roll of 54 doesn't lose is 75%;
+With two players behind us and only one roll allowed, the probability that our roll of 54 doesn't lose is 75%.
 
 #### Generalized
 This equation was a bit harder to generalize mathematically.  What's important to note is that the union of 2 events is the union of those probabilities.  If we take that union of 2 events as it's own event, then the union of 3 events is the union of the event and the previous union of just 2 of the events. 
