@@ -1,5 +1,9 @@
 ---
 name: Task Escalator
+image: taskalator_screenshot.png
+description: An extension for Todoist.
+website: https://taskalator.web.app
+repository: https://gitlab.com/benscrane/task-escalator
 ---
 
-This is a project
+Project overview will eventually go here.

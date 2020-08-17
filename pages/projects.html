@@ -9,7 +9,24 @@ layout: base
 
     <div class="flex flex-wrap">
         {% for project in site.projects %}
-            <div class="w-1/2 p-2">{{ project.name }}</div>
+            <div class="w-1/2">
+                <div class="shadow-lg rounded">
+                    <img src="/assets/{{ project.image }}" alt="{{ project.name }} image">
+                    <div class="px-6 py-4">
+                        <div class="font-medium text-lg mb-2">
+                            <a href="{{ project.url }}">{{ project.name }}</a>
+                        </div>
+                        <p class="">
+                            {{ project.description }}
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 flex flex-row">
+                        <a href="{{ project.website }}">Visit site</a>
+                        <span class="flex-grow"></span>
+                        <a href="{{ project.repository }}">View source</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </div>
 </div>
