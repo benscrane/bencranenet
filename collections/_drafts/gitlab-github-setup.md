@@ -21,6 +21,9 @@ those guidelines down.
 
 ## Why I use GitLab
 
+GitLab has a full suite of SDLC tools.  For me, it's an all in one set of tools 
+that helps me manage tests and CICD.
+
 ## Why I use GitHub
 
 GitHub is a social platform for developers.  It's also a great place to host 
