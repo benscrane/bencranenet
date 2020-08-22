@@ -1,6 +1,6 @@
 ---
 title: A Probability Function for JS Dice
-date: 2019-10-06 00:00:00
+date: 2019-10-06T04:00:00Z
 tags:
     - Probability
     - JavaScript
