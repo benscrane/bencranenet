@@ -2,6 +2,7 @@ module.exports = ({ env }) => {
   let environment = {
     plugins: [
       require("postcss-import"),
+      require("postcss-nested"),
       require("tailwindcss")("./tailwind.config.js"),
       require("postcss-preset-env")
     ]
