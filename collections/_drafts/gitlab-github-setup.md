@@ -41,4 +41,6 @@ Opensource
 
 ## Repo mirroring
 
+I use password authentication with a personal access token. https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html#setting-up-a-push-mirror-from-gitlab-to-github-core
+
 This is a living document and I'll be updating it as my approach evolves.
