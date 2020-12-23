@@ -1,14 +1,10 @@
 ---
 title: A Probability Function for JS Dice
 date: 2019-10-06T04:00:00Z
-tags:
-  - Probability
-  - JavaScript
+tags: [Probability, JavaScript]
 description: Using math to win at gambling
 draft: false
 ---
-
-# Staying Alive in Dice with JS
 
 **_Goal_**: _To create a JavaScript function that calculates the probability
 that at least one player will end up with a dice roll lower than or equal to

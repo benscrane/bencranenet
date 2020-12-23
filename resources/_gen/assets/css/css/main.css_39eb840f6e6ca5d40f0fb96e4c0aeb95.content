@@ -42361,6 +42361,8 @@ video {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -42387,6 +42389,11 @@ h4 {
 h5, h6 {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+p {
+  line-height: 1.25;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 640px) {
