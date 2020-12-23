@@ -1,0 +1,25 @@
+baseURL = "https://bencrane.net"
+languageCode = "en-us"
+title = "Ben Crane"
+theme = "main"
+
+[taxonomies]
+tag = "tags"
+
+[permalinks]
+posts = ":title"
+
+[params]
+timeFormatShort = "Jan 02, 2006"
+
+[menu]
+
+[[menu.main]]
+name = "About"
+url = "/about/"
+
+[markup]
+
+[markup.goldmark]
+
+

@@ -1,18 +1,18 @@
-module.exports = ({ env }) => {
-  let environment = {
-    plugins: [
-      require("postcss-import"),
-      require("postcss-nested"),
-      require("tailwindcss")("./tailwind.config.js"),
-      require("postcss-preset-env")
-    ]
-  };
-
-  if (env === "production") {
-    environment.plugins.push(
-      require("@fullhuman/postcss-purgecss")("./purgecss.config.js")
-    );
-  }
-
-  return environment;
-};
+module.exports = {
+  plugins: [
+    require('postcss-import'),
+    require('postcss-mixins'),
+    require('postcss-nested'),
+    require('postcss-color-function'),
+    require('postcss-simple-vars'),
+    require('tailwindcss'),
+    require('postcss-preset-env'),
+    ...(process.env.NODE_ENV === 'production'
+      ? [
+          require('cssnano')({
+            preset: ['default', {discardComments: {removeAll: true}}],
+          }),
+        ]
+      : []),
+  ],
+}

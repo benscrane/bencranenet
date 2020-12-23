@@ -1,9 +1,1 @@
-/_includes/packs.html
-/_site
-/node_modules
-/.jekyll-metadata
-/assets
-yarn-error.log
-.jekyll-cache/
-**/*/.env
-.now
+node_modules

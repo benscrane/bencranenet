@@ -1,0 +1,51 @@
+{{ define "main" }}
+
+{{ $Pages := .Pages }}
+
+{{ $home := .IsHome }}
+{{ if .IsHome }}
+  {{ $Pages = where site.RegularPages "Type" "in" .Site.Params.mainSections }}
+{{ end }}
+
+{{ $ShowMonth := .Site.Params.showmonth}}
+
+<article class="archive">
+  <header style="text-align: center;">
+    {{ if .IsHome }}
+      {{ if .Site.Params.Slogan }}
+      <div class="slogan">
+        {{ .Site.Params.Slogan }}
+      </div>
+      {{ end }}
+    {{ else }}
+    <h1>
+      {{ .Title }}
+    </h1>
+    {{ end }}
+  </header>
+
+  <div class="post-list">
+  {{ range $Pages.GroupByDate "2006" }}
+    <h2 class="year">{{ .Key }}</h2>
+
+    {{ range .Pages.GroupByDate "January"}}
+    {{ if and $home $ShowMonth }}<h3 class="month">{{ .Key }}</h3>{{ end }}
+    <!-- .Pages in $Pages -->
+    {{ range .Pages }}
+      <li class="post-item">
+      {{ if .Date }}
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{ end }}
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+         <!-- range .Params.categories 
+          >> <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" padding-left: auto;><strong>{{ . }}</strong></a>
+         end  -->
+      </li>
+      {{ end }}
+    {{ end }}
+    
+  {{ end }}
+  </div>
+</article>
+
+{{ end }}
