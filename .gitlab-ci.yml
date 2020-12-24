@@ -9,6 +9,9 @@ build:
   script:
     - npm install
     - npm run build
+  artifacts:
+    paths:
+      - public
 
 deploy:
   stage: deploy
