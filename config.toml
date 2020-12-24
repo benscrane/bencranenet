@@ -4,6 +4,8 @@ title = "Ben Crane"
 theme = "main"
 pygmentsUseClasses = true
 
+disableKinds = ["section"]
+
 [taxonomies]
 tag = "tags"
 
@@ -18,6 +20,10 @@ timeFormatShort = "Jan 02, 2006"
 [[menu.main]]
 name = "About"
 url = "/about/"
+
+[[menu.main]]
+name = "Tags"
+url = "/tags/"
 
 [markup]
 

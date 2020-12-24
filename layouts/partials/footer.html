@@ -1,3 +1,25 @@
-<footer class="text-center text-grey-darkest text-xs py-2">
+<footer class="text-center text-grey-darkest text-xs py-2 space-y-2">
+  <div class="space-x-2">
+    {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}">
+        {{ .Name }}
+      </a>
+    {{ end }}
+  </div>
+
+  <div class="space-x-2">
+    <a href="mailto:ben@bencrane.net">
+      Email
+    </a>
+    <a href="https://github.com/benscrane">
+      GitHub
+    </a>
+    <a href="https://gitlab.com/benscrane">
+      GitLab
+    </a>
+    <a href="https://twitter.com/bencrane">
+      Twitter
+    </a>
+  </div>
   <p>&copy;{{ now.Format "2006" }} {{ .Site.Title }}</p>
 </footer>

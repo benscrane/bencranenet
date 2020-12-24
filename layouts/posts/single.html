@@ -6,5 +6,7 @@
         <p class="text-sm text-gray-600">{{ .Date.Format "January 2, 2006" }}</p>
     </header>
     {{ .Content }}
+
+    {{ partial "tags" . }}
 </div>
 {{ end }}
