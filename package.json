@@ -1,35 +1,32 @@
 {
-  "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/preset-env": "^7.11.0",
-    "@fullhuman/postcss-purgecss": "^1.3.0",
-    "babel-loader": "^8.1.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "browser-sync": "^2.26.12",
-    "browser-sync-webpack-plugin": "^2.2.2",
-    "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^4.2.2",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.10.0",
-    "netlify-cli": "^2.59.1",
-    "postcss": "^7.0.32",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.5.0",
-    "script-ext-html-webpack-plugin": "^2.1.4",
-    "stimulus": "^1.1.0",
-    "style-loader": "^0.23.1",
-    "tailwindcss": "^1.7.3",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
-  },
+  "name": "bencranenet",
+  "version": "1.0.0",
+  "description": "my personal site",
+  "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch --env.NODE_ENV=development",
-    "build": "webpack --mode production  --env.NODE_ENV=production",
-    "deploy": "netlify deploy --dir ./_site --prod --auth $NETLIFY_AUTH_TOKEN"
+    "start": "cross-env NODE_ENV=development hugo server --buildFuture",
+    "build": "cross-env NODE_ENV=production hugo --gc --minify",
+    "format": "prettier --write assets/**/*.{js,css} {content,archetypes,layouts}/**/*.{md,html} tailwind.config.js postcss.config.js ./**/*.toml",
+    "deploy": "netlify deploy --dir ./public --prod --auth $NETLIFY_AUTH_TOKEN"
   },
-  "dependencies": {
-    "turbolinks": "^5.2.0"
+  "author": "Ben Crane",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.3.1",
+    "cross-env": "^7.0.3",
+    "cssnano": "^4.1.10",
+    "hugo-bin": "^0.67.0",
+    "postcss-cli": "^8.3.1",
+    "postcss-color-function": "^4.1.0",
+    "postcss-import": "^14.0.0",
+    "postcss-mixins": "^7.0.2",
+    "postcss-nested": "^5.0.3",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-simple-vars": "^6.0.2",
+    "prettier": "^2.2.1",
+    "prettier-plugin-go-template": "0.0.10",
+    "prettier-plugin-toml": "^0.3.1",
+    "tailwindcss": "^2.0.2",
+    "tailwindcss-dark-mode": "^1.1.7"
   }
 }

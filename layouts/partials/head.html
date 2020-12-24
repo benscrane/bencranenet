@@ -1,0 +1,43 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{ hugo.Generator }}
+
+  <title>
+    {{ if .IsHome }} {{ "Home" }} | {{ else }} {{ .Title }} | {{ end }}
+    {{ .Site.Title }}
+  </title>
+  {{- if or .Description .Site.Params.description }}
+    <meta
+      name="description"
+      content="{{ .Description | default .Site.Params.description }}"
+    />
+  {{- end }}
+  <link rel="icon" href="/favicon.ico" />
+
+  {{ $postCSSConfig := (dict "config" "postcss.config.js") }}
+  {{ if .Site.IsServer }}
+    {{ $css := resources.Get "css/main.css" | toCSS | postCSS $postCSSConfig }}
+    <link
+      rel="stylesheet"
+      href="{{ $css.Permalink | relURL }}"
+      media="screen"
+    />
+    {{ else }}
+    {{ $css := resources.Get "css/main.css" | toCSS | postCSS $postCSSConfig | minify | fingerprint }}
+    <link
+      rel="stylesheet"
+      href="{{ $css.Permalink | relURL }}"
+      integrity="{{ $css.Data.Integrity }}"
+      media="screen"
+    />
+  {{ end }}
+
+  <link rel="canonical" href="{{ .Permalink }}" />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}"
+    title="{{ .Site.Title }}"
+  />
+</head>

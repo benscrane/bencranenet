@@ -1,14 +1,25 @@
-image: timbru31/ruby-node:2.7
+image: node:latest
 
-deploy:
-  script:
-    - node --version
-    - npm install
-    - npm run build
-    - bundle install
-    - bundle exec jekyll build
-    - npm run build
-    - bundle exec jekyll build
-    - npm run deploy
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
   only:
     - master
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - public
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - npm run deploy
+  dependencies:
+    - build
