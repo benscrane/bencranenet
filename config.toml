@@ -3,7 +3,6 @@ languageCode = "en-us"
 title = "Ben Crane"
 theme = "main"
 pygmentsUseClasses = true
-
 disableKinds = ["section"]
 
 [taxonomies]

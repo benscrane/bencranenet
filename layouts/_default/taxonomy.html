@@ -1,12 +1,10 @@
 {{ define "main" }}
+  {{ $Pages := .Pages }}
 
-{{ $Pages := .Pages }}
-
-<section class="mt-10">
-  <h2 class="font-semibold text-lg mb-4">#{{ .Title | urlize }}</h2>
-  <ul>
-    {{ partial "home-list" $Pages }}
-  </ul>
-</section>
-
+  <section class="mt-10">
+    <h2 class="font-semibold text-lg mb-4">#{{ .Title | urlize }}</h2>
+    <ul>
+      {{ partial "home-list" $Pages }}
+    </ul>
+  </section>
 {{ end }}
