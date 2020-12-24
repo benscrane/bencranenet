@@ -6,6 +6,8 @@ stages:
 
 build:
   stage: build
+  only:
+    - master
   script:
     - npm install
     - npm run build
@@ -19,3 +21,5 @@ deploy:
     - master
   script:
     - npm run deploy
+  dependencies:
+    - build
