@@ -3,7 +3,7 @@ title: Love Being Wrong
 date: 2020-08-22T04:00:00Z
 tags: [Learning]
 description: Why I want to be wrong
-draft: false
+draft: true
 ---
 
 <!--more-->
