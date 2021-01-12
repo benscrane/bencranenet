@@ -69,7 +69,7 @@ development:
 \
 Finally, run the Rails commands to setup the database and we're good to go.
 
-```
+```bash
 rails db:setup
 rails db:migrate
 ```  
