@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "posts") }}
+<main>
+    <ul>
+        {{ range $paginator.Pages }}
+            <li>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <p>
+                    <time>{{ .Date.Format "02 Jan 2006" }}</time>
+                    {{ if .Params.tags }} | {{ end }}
+                    {{ if isset .Params "tags" }}
+                    tags: [ {{ range .Params.tags }}<a href="/tags/{{ . | urlize }}">{{ . | lower | urlize }}</a> {{ end }} ]
+                    {{ end }}
+                </p>
+            </li>
+        {{ end }}
+    </ul>
+</main>
+{{ end }}
