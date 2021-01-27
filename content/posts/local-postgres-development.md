@@ -74,7 +74,8 @@ rails db:setup
 rails db:migrate
 ```  
 \
-_Sources I pieced this together from_\
+_Sources I pieced this together from:_\
+\
 [ArchWiki](https://wiki.archlinux.org/index.php/PostgreSQL#Installation)\
 [DigitalOcean Blog](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-ruby-on-rails-application-on-centos-7)\
 [Rails Guides](https://guides.rubyonrails.org/testing.html#the-low-down-on-fixtures)
