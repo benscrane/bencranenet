@@ -4,4 +4,6 @@
 
 @import './typography.css';
 
-@import './syntax.css';
+/* @import './syntax.css'; */
+
+@import './theme.css';
