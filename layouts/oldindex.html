@@ -1,9 +1,0 @@
-{{ define "main" }}
-  <div>
-    <section class="mt-10">
-      <h2 class="font-semibold text-lg mb-4">Posts</h2>
-      {{ $posts := where .Site.RegularPages "Section" "posts" }}
-      {{ partial "home-list" $posts }}
-    </section>
-  </div>
-{{ end }}
