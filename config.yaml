@@ -1,0 +1,20 @@
+baseURL: 'https://www.bencrane.net/'
+languageCode: en-us
+title: Ben Crane
+theme: papermod
+paginate: 5
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableRobotsTXT: true
+
+params:
+  ShowReadingTime: true
+
+menu:
+  main: 
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
