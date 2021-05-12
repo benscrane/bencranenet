@@ -4,6 +4,7 @@ date: 2019-10-06T04:00:00Z
 tags: [Probability, JavaScript]
 description: Using math to win at gambling
 draft: false
+math: true
 ---
 
 **_Goal_**: _To create a JavaScript function that calculates the probability
@@ -40,12 +41,16 @@ rolls of any other players.
 **Probability Intersection**: The probability that events A and B both occur is
 the probability of the intersection of of A and B.
 
-![intersection](https://latex.codecogs.com/svg.latex?P%28A%5Ccap%20B%29%20%3D%20P%28A%29%5Ctimes%20P%28B%29)
+$$
+P (A \cap B) = P(A) \times P(B)
+$$
 
 **Probability Union**: The probability that events A or B occcur is the
 probability union of A and B.
 
-![union](https://latex.codecogs.com/svg.latex?P%28A%5Ccup%20B%29%20%3D%20P%28A%29+%20P%28B%29%20-%20P%28A%5Ccap%20B%29)
+$$
+P (A \cup B) = P(A) + P(B) - P(A \cap B)
+$$
 
 ## Simplifed Cases
 
@@ -60,11 +65,15 @@ event of rolling a 54 or less.
 
 Expressed in an equation this is:
 
-![equation](https://latex.codecogs.com/svg.latex?P%2854%5Ccap%2054%29%20%3D%20P%2854%29%5Ctimes%20P%2854%29%20%3D%20P%2854%29%5E%7B2%7D)
+$$
+P (54 \cap 54) = P(54) \times P(54) = P(54)^2
+$$
 
 The probability of any roll being less than or equal to 54 is 50%.
 
-![equation](https://latex.codecogs.com/svg.latex?P%2854%5Ccap%2054%29%20%3D%200.5%20%5Ctimes%200.5%20%3D%200.5%5E%7B2%7D%20%3D%200.25)
+$$
+P(54 \cap 54) = 0.5 \times 0.5 = 0.5^2 = 0.25
+$$
 
 So with one player behind us and 2 rolls allowed, the probability that our roll
 of 54 doesn't lose is only 25%.
@@ -81,7 +90,9 @@ player ending up with a roll equal to or less than ours.
 - **P(stayAlive)**: The probability that we're not the lowest roll at the end of
   the round.
 
-![equation](https://latex.codecogs.com/svg.latex?P%28stayAlive%29%20%3D%20P%28roll%29%5E%7Bn%7D)
+$$
+P(stayAlive) = P(roll)^n
+$$
 
 ### Two players left, 1 roll allowed
 
@@ -92,12 +103,16 @@ the union of events A and B where both events represent one player rolling
 
 Here's that expressed as an equation:
 
-![equation](https://latex.codecogs.com/svg.latex?P%2854%20%5Ccup%2054%29%20%3D%20P%2854%29%20+%20P%2854%29%20-%20P%2854%20%5Ccap%2054%29)
+$$
+P(54 \cup 54) = P(54) + P(54) - P(54 \cap 54)
+$$
 
 P(54) is still equal to 0.5 and the intersection of two P(54) events is 0.25, as
 shown above.
 
-![equation](https://latex.codecogs.com/svg.latex?P%2854%20%5Ccup%2054%29%20%3D%200.5%20+%200.5%20-%200.25%20%3D%200.75)
+$$
+P(54 \cup 54) = 0.5 + 0.5 - 0.25 = 0.75
+$$
 
 With two players behind us and only one roll allowed, the probability that our
 roll of 54 doesn't lose is 75%.
@@ -111,7 +126,9 @@ union of the event and the previous union of just 2 of the events.
 
 In equation form:
 
-![equation](https://latex.codecogs.com/svg.latex?P%28A%20%5Ccup%20A%20%5Ccup%20A%29%20%3D%20P%28A%20%5Ccup%20%28P%28A%20%5Ccup%20A%29%29%29)
+$$
+P(A \cup A \cup A) = P(A \cup (P(A \cup A)))
+$$
 
 Expanding this out as the number of events grows gets a bit tedious but we can
 use the programming concept known as recursion to simplify this in code.
@@ -130,13 +147,21 @@ equation for multiple players to get our full solution.
 
 For two players left and two rolls allowed, here's that equation:
 
-![equation](https://latex.codecogs.com/svg.latex?P%28stayAlive%29%20%3D%20P%28P%2854%5Ccap%2054%29%20%5Ccup%20P%2854%5Ccap%2054%29%29)
+$$
+P(stayAlive) = P(P(54 \cap 54) \cup P(54 \cap 54))
+$$
 
-![equation](https://latex.codecogs.com/svg.latex?P%28stayAlive%29%20%3D%20P%28P%2854%29%5E%7B2%7D%20%5Ccup%20P%2854%29%5E%7B2%7D%29)
+$$
+P(stayAlive) = P(P(54)^2 \cup P(54)^2)
+$$
 
-![equation](https://latex.codecogs.com/svg.latex?P%28stayAlive%29%20%3D%20P%280.5%5E%7B2%7D%20%5Ccup%200.5%5E%7B2%7D%29%20%3D%20P%280.25%20%5Ccup%200.25%29)
+$$
+P(stayAlive) = P(0.5^2 \cup 0.5^2) = P(0.25 \cup 0.25)
+$$
 
-![equation](https://latex.codecogs.com/svg.latex?P%28stayAlive%29%20%3D%200.25%20+%200.25%20-%200.25%5E%7B2%7D%20%3D%200.4375)
+$$
+P(stayAlive) = 0.25 + 0.25 - 0.25^2 = 0.4375
+$$
 
 If we roll a 54 with 2 players left behind us and 2 rolls allowed, we have a
 43.75% chance of not being eliminated and at least making it to a roll off.
@@ -149,7 +174,9 @@ equal to our roll is just the union of the probability of one player rolling <=
 our roll and the probability of the probability of n-1 players rolling <= our
 roll.
 
-![equation](https://latex.codecogs.com/svg.latex?f%28n%29%20%3D%20f%281%29%20%5Ccup%20f%28n-1%29)
+$$
+f(n) = f(1) \cup f(n-1)
+$$
 
 Here we have a function that calls it self n-1 times. If we wrote that out it
 would get messy quickly but it's easy for a computer to keep track of it.
