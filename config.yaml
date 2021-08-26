@@ -11,6 +11,10 @@ enableRobotsTXT: true
 
 params:
   ShowReadingTime: true
+  
+socialIcons:
+  - name: "twitter"
+    url: "https://twitter.com/bencrane"
 
 menu:
   main: 
