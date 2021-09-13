@@ -6,4 +6,7 @@ ports:
 
 tasks:
   - name: Start server
-    command: hugo server --baseUrl $(gp url 1313) --appendPort=false
+    command: hugo server  --buildDrafts --baseUrl $(gp url 1313) --appendPort=false
+  - name: Open terminal
+    command: git status
+    openMode: split-right
