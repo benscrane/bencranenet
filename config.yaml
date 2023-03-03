@@ -1,7 +1,7 @@
 baseURL: 'https://bencrane.net/'
 languageCode: en-us
 title: Ben Crane
-theme: papermod
+theme: personal
 paginate: 5
 
 buildDrafts: false
