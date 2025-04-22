@@ -61,7 +61,7 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Bluesky',
-            href: 'https://bsky.app/profile/bcrane.bsky.social/',
+            href: 'https://bsky.app/profile/bencrane.net',
         },
     ],
     headerNavLinks: [
