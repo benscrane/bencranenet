@@ -1,0 +1,6 @@
+name = "bencranenet"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-02-22"
+
+[build]
+command = "npm run build"
