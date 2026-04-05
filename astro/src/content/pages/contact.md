@@ -11,4 +11,4 @@ _Email:_
 Feel free to drop me an email at [bencrane@protonmail.com](mailto:bencrane@protonmail.com), and I'll do my best to respond as soon as possible.
 
 _Social Media:_
-Connect with me on social media as well. Find me on [Bluesky](https://bsky.app/profile/bcrane.bsky.social/) or [LinkedIn](https://www.linkedin.com/in/benscrane/).
+Connect with me on social media as well. Find me on [LinkedIn](https://www.linkedin.com/in/benscrane/).
