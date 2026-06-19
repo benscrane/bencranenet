@@ -12,44 +12,26 @@
     --bg-main: #f2f1ec;
     --bg-muted: #eae9e1;
     --border-main: #171717;
+    /* Accent — Moss / Olive */
+    --accent: #5f6e2b;
 }
 html.dark {
     --text-main: #f2f1ec;
     --bg-main: #171717;
     --bg-muted: #242424;
     --border-main: #f2f1ec;
+    /* Accent — Moss / Olive (lightened for dark bg) */
+    --accent: #c0d27f;
 }
 
-/* Cyan */
-/*
-:root {
-    --text-main: #162a2b;
-    --bg-main: #d6e0e2;
-    --bg-muted: #ccd8db;
-    --border-main: #162a2b;
-}
-html.dark {
-    --text-main: #d6e0e2;
-    --bg-main: #162a2b;
-    --bg-muted: #1c3537;
-    --border-main: #d6e0e2;
-}
-*/
+/* Accent swap options — replace the Moss values above with one of these pairs.
+   Each pair is tuned: a deeper shade for the light theme, a lighter shade for
+   dark, and verified for WCAG contrast in both themes.
 
-/* Green */
-/*
-:root {
-    --text-main: #3a4238;
-    --bg-main: #f3efe6;
-    --bg-muted: #eee9dc;
-    --border-main: #3a4238;
-}
-html.dark {
-    --text-main: #f3efe6;
-    --bg-main: #5e6c5b;
-    --bg-muted: #596756;
-    --border-main: #f3efe6;
-}
+   Pine Green:   light #166534   dark #6ee7b7
+   Plum:         light #7a3b86   dark #d8aee0
+   Violet:       light #6d28d9   dark #c4b5fd
+   Terracotta:   light #b3492d   dark #e08a6f
 */
 
 @theme inline {
@@ -59,6 +41,7 @@ html.dark {
     --background-color-main: var(--bg-main);
     --background-color-muted: var(--bg-muted);
     --border-color-main: var(--border-main);
+    --color-accent: var(--accent);
 }
 
 @layer utilities {
@@ -81,7 +64,11 @@ html.dark {
     }
 
     .prose a {
-        @apply underline font-normal decoration-1 underline-offset-2 decoration-dashed hover:decoration-solid;
+        @apply text-accent underline font-normal decoration-1 underline-offset-2 decoration-dashed hover:decoration-solid;
+        text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    }
+    .prose a:hover {
+        text-decoration-color: var(--accent);
     }
 
     .prose :where(h1, h2, h3, h4, h5, h6) {

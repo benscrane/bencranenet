@@ -27,3 +27,20 @@ The workflow:
 3. Deploys `dist/` to the `bencranenet` Cloudflare Pages project using `cloudflare/wrangler-action`
 
 No manual deployment steps are required.
+
+## Analytics
+
+The site supports [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/)
+(cookieless, no consent banner required). The beacon only loads in production
+builds, and only when a token is provided via the `PUBLIC_CF_BEACON_TOKEN`
+environment variable.
+
+To enable it:
+
+1. In the Cloudflare dashboard, go to **Web Analytics** and add a site for
+   `bencrane.net` (or use the existing one). Copy the **JS snippet token**.
+2. Expose it to the build as `PUBLIC_CF_BEACON_TOKEN` — set it as a build
+   environment variable in the Cloudflare Pages project settings, or as a
+   repository variable/secret consumed by `.github/workflows/deploy.yml`.
+
+If the variable is unset, no analytics script is emitted.

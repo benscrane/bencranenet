@@ -42,7 +42,8 @@ const siteConfig: SiteConfig = {
     title: 'Ben Crane',
     website: 'https://bencrane.net',
     hero: {
-        text: "Hi there, I'm Ben Crane, a software engineer and engineering manager currently working at Redox to make healthcare data useful.",
+        title: 'Software, side projects, and the occasional write-up.',
+        text: "I'm Ben Crane, a software engineer and engineering manager working on healthcare data. Off the clock, I build side projects and write up what I learn here.",
         actions: [
             {
                 text: 'Get in Touch',

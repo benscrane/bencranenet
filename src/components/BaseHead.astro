@@ -21,6 +21,10 @@ const resolvedImage = image?.src
     : undefined;
 const canonicalURL = new URL(Astro.request.url, Astro.site);
 
+// Cloudflare Web Analytics — only loaded in production builds, and only when
+// a beacon token is configured via the PUBLIC_CF_BEACON_TOKEN env var.
+const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+
 /**
  * Enforce some standard canonical URL formatting across the site.
  */
@@ -66,3 +70,14 @@ function formatCanonicalURL(url: string | URL) {
 <meta property="twitter:description" content={description} />
 {resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}
+
+<!-- Cloudflare Web Analytics (cookieless, production only) -->
+{
+    import.meta.env.PROD && cfBeaconToken && (
+        <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+        />
+    )
+}
