@@ -16,12 +16,6 @@ interface Hero {
     actions?: Link[];
 };
 
-interface Subscribe {
-    title?: string;
-    text?: string;
-    formUrl: string;
-};
-
 interface SiteConfig {
     title: string;
     subtitle?: string;
@@ -35,11 +29,11 @@ interface SiteConfig {
     headerNavLinks?: Link[];
     projectsPerPage?: number;
     blogPostsPerPage?: number;
-    subscribe?: Subscribe;
 }
 
 const siteConfig: SiteConfig = {
     title: 'Ben Crane',
+    description: 'Ben Crane — software engineer and engineering manager working on healthcare data. Side projects and write-ups.',
     website: 'https://bencrane.net',
     hero: {
         title: 'Software, side projects, and the occasional write-up.',

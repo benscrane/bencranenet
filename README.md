@@ -1,6 +1,6 @@
 # bencrane.net — Astro
 
-This is the active version of the site. The `hugo/` directory at the repo root is a previous iteration and is no longer used.
+This is the active version of the site.
 
 ## Tech stack
 
@@ -39,8 +39,12 @@ To enable it:
 
 1. In the Cloudflare dashboard, go to **Web Analytics** and add a site for
    `bencrane.net` (or use the existing one). Copy the **JS snippet token**.
-2. Expose it to the build as `PUBLIC_CF_BEACON_TOKEN` — set it as a build
-   environment variable in the Cloudflare Pages project settings, or as a
-   repository variable/secret consumed by `.github/workflows/deploy.yml`.
+2. In GitHub, add it as a **repository variable** named `PUBLIC_CF_BEACON_TOKEN`
+   under Settings → Secrets and variables → Actions → Variables. The Build step
+   in `.github/workflows/deploy.yml` passes it through to the build.
+
+   Note that setting it in the Cloudflare Pages project settings has no effect:
+   the site is built in GitHub Actions and `wrangler-action` only uploads the
+   prebuilt `dist/`, so Cloudflare never runs a build of its own.
 
 If the variable is unset, no analytics script is emitted.
