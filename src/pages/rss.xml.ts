@@ -14,8 +14,10 @@ export async function GET(context: any) {
             title: post.data.title,
             description: post.data.excerpt || post.data.seo?.description || '',
             link: `/blog/${post.id}/`,
+            // pubDate is the original publication date and must stay that way —
+            // spreading updatedDate over it here made republished posts look
+            // brand new to every feed reader.
             pubDate: post.data.publishDate,
-            ...(post.data.updatedDate && { pubDate: post.data.updatedDate }),
         })),
         customData: `<language>en-us</language>`,
     });

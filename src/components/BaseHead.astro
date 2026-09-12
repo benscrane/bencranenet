@@ -19,7 +19,9 @@ const resolvedImage = image?.src
           alt: image.alt
       }
     : undefined;
-const canonicalURL = new URL(Astro.request.url, Astro.site);
+// Astro.url, not Astro.request.url — Astro.request is not meaningfully
+// populated in a static build.
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Cloudflare Web Analytics — only loaded in production builds, and only when
 // a beacon token is configured via the PUBLIC_CF_BEACON_TOKEN env var.
