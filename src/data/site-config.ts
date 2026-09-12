@@ -2,6 +2,8 @@ interface Image {
     src: string;
     alt?: string;
     caption?: string;
+    width?: number;
+    height?: number;
 }
 
 interface Link {
@@ -37,7 +39,9 @@ const siteConfig: SiteConfig = {
     website: 'https://bencrane.net',
     image: {
         src: '/og-image.png',
-        alt: 'Ben Crane — software, side projects, and the occasional write-up.'
+        alt: 'Ben Crane — software, side projects, and the occasional write-up.',
+        width: 1200,
+        height: 630
     },
     hero: {
         title: 'Software, side projects, and the occasional write-up.',
