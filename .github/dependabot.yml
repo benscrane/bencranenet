@@ -1,0 +1,40 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 3
+    # Skip day-zero releases; let a version sit for a week first.
+    cooldown:
+      default-days: 7
+    groups:
+      # Order matters: a dependency joins the FIRST group it matches.
+      # astro and @astrojs/* must travel together — @astrojs/mdx majors are
+      # peer-pinned to astro majors (mdx 8 peers astro ^7), so ungrouped they
+      # would arrive as two PRs that each fail on their own and neither could
+      # merge.
+      astro:
+        patterns:
+          - astro
+          - '@astrojs/*'
+      tailwind:
+        patterns:
+          - tailwindcss
+          - '@tailwindcss/*'
+      everything-else:
+        patterns:
+          - '*'
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns:
+          - '*'
