@@ -59,7 +59,13 @@ done
 
 echo "- metadata"
 contains index.html 'rel="canonical" href="https://bencrane.net/"'
+# An absolute og:image URL plus explicit dimensions is what most scrapers
+# need to render a card at all; a relative path is the usual reason one
+# silently does not appear.
 contains index.html 'property="og:image" content="https://bencrane.net/og-image.png"'
+contains index.html 'property="og:image:width" content="1200"'
+contains index.html 'property="og:image:height" content="630"'
+contains index.html 'property="twitter:card" content="summary_large_image"'
 contains blog/js-dice/index.html 'rel="canonical" href="https://bencrane.net/blog/js-dice/"'
 contains robots.txt 'Sitemap: https://bencrane.net/sitemap-index.xml'
 
