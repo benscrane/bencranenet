@@ -31,7 +31,6 @@
     "@tailwindcss/vite": "^4.2.0",
     "astro": "^5.17.3",
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^1.0.0",
     "tailwindcss": "^4.2.0",
     "typescript": "^5.9.3",
     "vite": "^6.4.3"

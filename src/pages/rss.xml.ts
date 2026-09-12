@@ -21,8 +21,8 @@ export async function GET(context: APIContext) {
             // pubDate is the original publication date and must stay that way —
             // spreading updatedDate over it here made republished posts look
             // brand new to every feed reader.
-            pubDate: post.data.publishDate,
+            pubDate: post.data.publishDate
         })),
-        customData: `<language>en-us</language>`,
+        customData: `<language>en-us</language>`
     });
 }

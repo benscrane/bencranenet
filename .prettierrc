@@ -4,14 +4,7 @@
     "semi": true,
     "printWidth": 140,
     "trailingComma": "none",
-    "plugins": ["prettier-plugin-astro"],
     "overrides": [
-        {
-            "files": "*.astro",
-            "options": {
-                "parser": "astro"
-            }
-        },
         {
             "files": ["*.json", "*.yml", "*.yaml", "*.md"],
             "options": {

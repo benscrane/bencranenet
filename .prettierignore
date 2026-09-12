@@ -4,3 +4,15 @@ node_modules/
 package-lock.json
 public/
 src/assets/
+
+# Prose, not code. Reformatting Markdown reflows author-chosen line breaks.
+src/content/
+
+# Astro templates are deliberately excluded. prettier-plugin-astro re-wraps
+# markup when a line exceeds printWidth, and re-wrapping changes rendered
+# whitespace: it turned the footer into "Ben Crane . All rights reserved."
+# (note the space before the period). htmlWhitespaceSensitivity "strict" does
+# not prevent it. A formatter that can silently alter shipped HTML is worse
+# than no formatter, so Prettier is scoped to logic and config files, where
+# drift causes review noise and reformatting is output-safe.
+*.astro

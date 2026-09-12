@@ -22,6 +22,7 @@ The dev server starts at `http://localhost:4321`.
 The site is deployed to [Cloudflare Pages](https://pages.cloudflare.com) automatically on every push to `main` via the GitHub Actions workflow at `.github/workflows/deploy.yml`.
 
 The workflow:
+
 1. Installs dependencies (`npm ci`)
 2. Builds the site (`npm run build`), outputting static files to `dist/`
 3. Deploys `dist/` to the `bencranenet` Cloudflare Pages project using `cloudflare/wrangler-action`

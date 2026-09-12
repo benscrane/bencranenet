@@ -9,7 +9,7 @@ import siteConfig from './src/data/site-config';
 export default defineConfig({
     site: siteConfig.website,
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [tailwindcss()]
     },
-    integrations: [mdx(), sitemap()],
+    integrations: [mdx(), sitemap()]
 });
