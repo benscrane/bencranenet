@@ -1,7 +1,12 @@
 ---
+import type { Page } from 'astro';
 import ArrowLeft from '../icons/ArrowLeft.astro';
 import ArrowRight from '../icons/ArrowRight.astro';
 import IconButton from './IconButton.astro';
+
+// Only the pagination metadata is used here, never page.data, so the entry
+// type is left open — callers pass Page<CollectionEntry<'blog' | 'projects'>>.
+type Props = { page: Page<unknown>; class?: string };
 
 const { page, class: className } = Astro.props;
 ---

@@ -23,17 +23,26 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version-file: '.nvmrc'
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Type check
+        run: npm run check
+
+      - name: Format check
+        run: npm run format:check
+
       - name: Build
         run: npm run build
         env:
           PUBLIC_CF_BEACON_TOKEN: ${{ vars.PUBLIC_CF_BEACON_TOKEN }}
+
+      - name: Smoke test build output
+        run: npm run smoke
 
       # Pull requests build only — never deploy. Without this guard, adding the
       # pull_request trigger above would publish every PR to production.

@@ -16,7 +16,7 @@ interface Hero {
     text?: string;
     image?: Image;
     actions?: Link[];
-};
+}
 
 interface SiteConfig {
     title: string;
@@ -50,22 +50,22 @@ const siteConfig: SiteConfig = {
             {
                 text: 'Get in Touch',
                 href: '/contact'
-            },
-        ],
+            }
+        ]
     },
     socialLinks: [
         {
             text: 'GitHub',
-            href: 'https://github.com/benscrane',
+            href: 'https://github.com/benscrane'
         },
         {
             text: 'LinkedIn',
-            href: 'https://www.linkedin.com/in/benscrane/',
+            href: 'https://www.linkedin.com/in/benscrane/'
         },
         {
             text: 'Bluesky',
-            href: 'https://bsky.app/profile/bencrane.net',
-        },
+            href: 'https://bsky.app/profile/bencrane.net'
+        }
     ],
     headerNavLinks: [
         {
@@ -79,8 +79,8 @@ const siteConfig: SiteConfig = {
         {
             text: 'Blog',
             href: '/blog'
-        },
-    ],
+        }
+    ]
 };
 
 export default siteConfig;
