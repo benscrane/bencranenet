@@ -7,7 +7,7 @@ import '../styles/global.css';
 export type Props = {
     title?: string;
     description?: string;
-    image?: { src: string; alt?: string };
+    image?: { src: string; alt?: string; width?: number; height?: number };
     pageType?: 'website' | 'article';
 };
 
@@ -16,10 +16,14 @@ const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(' | ');
 const resolvedImage = image?.src
     ? {
           src: new URL(image.src, Astro.site).toString(),
-          alt: image.alt
+          alt: image.alt,
+          width: image.width,
+          height: image.height
       }
     : undefined;
-const canonicalURL = new URL(Astro.request.url, Astro.site);
+// Astro.url, not Astro.request.url — Astro.request is not meaningfully
+// populated in a static build.
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Cloudflare Web Analytics — only loaded in production builds, and only when
 // a beacon token is configured via the PUBLIC_CF_BEACON_TOKEN env var.
@@ -62,6 +66,8 @@ function formatCanonicalURL(url: string | URL) {
 <meta property="og:description" content={description} />
 {resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta property="og:image:alt" content={resolvedImage.alt} />}
+{resolvedImage?.width && <meta property="og:image:width" content={String(resolvedImage.width)} />}
+{resolvedImage?.height && <meta property="og:image:height" content={String(resolvedImage.height)} />}
 
 <!-- X/Twitter -->
 <meta property="twitter:card" content="summary_large_image" />

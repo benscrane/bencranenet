@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout title="Page Not Found" description="That page doesn't exist." showHeader={false}>
+    <h1 class="mb-6 text-2xl leading-tight font-serif italic sm:mb-8 sm:text-4xl">Page not found</h1>
+    <p class="mb-8 text-lg">That page doesn't exist, or it moved somewhere else.</p>
+    <Button href="/">Back to home</Button>
+</BaseLayout>
