@@ -6,7 +6,6 @@ isFeatured: true
 draft: true
 ---
 
-**Project Overview:**
 `ynab-dash` is a full-screen terminal dashboard for [YNAB](https://ynab.com). It shows the budget at a glance and lets you clear the approve-and-categorize queue without leaving the terminal. Still a work in progress.
 
 ## The Problem
