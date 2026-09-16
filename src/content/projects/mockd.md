@@ -3,6 +3,7 @@ title: 'mockd'
 description: A mock API server built on Cloudflare Workers, with real-time request logging over WebSockets.
 publishDate: 'Jan 26 2026'
 isFeatured: true
+draft: true
 ---
 
 **Project Overview:**

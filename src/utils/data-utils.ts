@@ -12,6 +12,13 @@ export async function getPublishedPosts() {
     return posts.filter((post) => !post.data.draft).sort(sortItemsByDateDesc);
 }
 
+// Same rule as getPublishedPosts: every page that lists or links projects must
+// go through this, or a draft ships the next time someone adds a listing.
+export async function getPublishedProjects() {
+    const projects = await getCollection('projects');
+    return projects.filter((project) => !project.data.draft).sort(sortItemsByDateDesc);
+}
+
 export function getAllTags(posts: CollectionEntry<'blog'>[]) {
     const tags: string[] = [...new Set(posts.flatMap((post) => post.data.tags || []).filter(Boolean))];
     return tags

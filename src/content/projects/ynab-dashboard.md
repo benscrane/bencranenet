@@ -3,6 +3,7 @@ title: 'ynab-dashboard'
 description: A Rust terminal dashboard for YNAB, backed by a local SQLite mirror so it starts instantly and works offline.
 publishDate: 'May 30 2026'
 isFeatured: true
+draft: true
 ---
 
 **Project Overview:**

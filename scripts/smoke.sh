@@ -51,8 +51,6 @@ for page in \
     blog/js-dice/index.html \
     projects/index.html \
     projects/animals-and-amplifiers/index.html \
-    projects/mockd/index.html \
-    projects/ynab-dashboard/index.html \
     contact/index.html \
     tags/index.html; do
     exists "$page"
@@ -86,19 +84,24 @@ else
     fail "no KaTeX_*.woff2 in _astro/ — math will render in a fallback font"
 fi
 
-# Drafts are excluded by src/utils/data-utils.ts. Every page that lists posts
-# must go through getPublishedPosts() — a new listing page that calls
-# getCollection('blog') directly would publish these without any other signal.
+# Drafts are excluded by src/utils/data-utils.ts. Every page that lists posts or
+# projects must go through getPublishedPosts()/getPublishedProjects() — a new
+# listing page that calls getCollection() directly would publish these without
+# any other signal.
 echo "- drafts stay unpublished"
 for draft in \
     blog/one-database-per-tenant-durable-objects \
     blog/value-before-the-signup-wall \
     blog/delta-sync-instant-startup-rust-tui \
-    blog/calm-until-critical; do
+    blog/calm-until-critical \
+    projects/mockd \
+    projects/ynab-dashboard; do
     missing "$draft/index.html"
 done
 absent_everywhere 'Draft — notes only'
 absent_everywhere 'One SQLite Database per Tenant'
+absent_everywhere 'A mock API server built on Cloudflare Workers'
+absent_everywhere 'A Rust terminal dashboard for YNAB'
 
 echo "- regressions"
 absent_everywhere 'localhost'
