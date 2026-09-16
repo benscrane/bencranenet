@@ -94,13 +94,11 @@ for draft in \
     blog/value-before-the-signup-wall \
     blog/delta-sync-instant-startup-rust-tui \
     blog/calm-until-critical \
-    projects/mockd \
     projects/ynab-dashboard; do
     missing "$draft/index.html"
 done
 absent_everywhere 'Draft — notes only'
 absent_everywhere 'One SQLite Database per Tenant'
-absent_everywhere 'A mock API server built on Cloudflare Workers'
 absent_everywhere 'A Rust terminal dashboard for YNAB'
 
 echo "- regressions"
