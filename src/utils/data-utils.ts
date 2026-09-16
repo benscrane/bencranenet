@@ -1,8 +1,15 @@
-import { type CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import { slugify } from './common-utils';
 
 export function sortItemsByDateDesc(itemA: CollectionEntry<'blog' | 'projects'>, itemB: CollectionEntry<'blog' | 'projects'>) {
     return new Date(itemB.data.publishDate).getTime() - new Date(itemA.data.publishDate).getTime();
+}
+
+// Every page that lists posts must go through this. Calling getCollection('blog')
+// directly would publish drafts the moment a new listing page is added.
+export async function getPublishedPosts() {
+    const posts = await getCollection('blog');
+    return posts.filter((post) => !post.data.draft).sort(sortItemsByDateDesc);
 }
 
 export function getAllTags(posts: CollectionEntry<'blog'>[]) {
