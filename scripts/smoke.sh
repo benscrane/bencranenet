@@ -26,6 +26,10 @@ contains() {
     fi
 }
 
+missing() {
+    if [ -e "$DIST/$1" ]; then fail "$1 was built but should not exist"; else pass "$1 not built"; fi
+}
+
 absent_everywhere() {
     if grep -rqF "$1" "$DIST"; then
         fail "'$1' still appears in the build output"
@@ -79,6 +83,25 @@ if ls "$DIST"/_astro/KaTeX_*.woff2 >/dev/null 2>&1; then
 else
     fail "no KaTeX_*.woff2 in _astro/ — math will render in a fallback font"
 fi
+
+# Drafts are excluded by src/utils/data-utils.ts. Every page that lists posts or
+# projects must go through getPublishedPosts()/getPublishedProjects() — a new
+# listing page that calls getCollection() directly would publish these without
+# any other signal.
+echo "- drafts stay unpublished"
+for draft in \
+    blog/one-database-per-tenant-durable-objects \
+    blog/value-before-the-signup-wall \
+    blog/delta-sync-instant-startup-rust-tui \
+    blog/calm-until-critical \
+    projects/mockd \
+    projects/ynab-dashboard; do
+    missing "$draft/index.html"
+done
+absent_everywhere 'Draft — notes only'
+absent_everywhere 'One SQLite Database per Tenant'
+absent_everywhere 'A mock API server built on Cloudflare Workers'
+absent_everywhere 'A Rust terminal dashboard for YNAB'
 
 echo "- regressions"
 absent_everywhere 'localhost'
