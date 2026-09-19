@@ -26,6 +26,16 @@ contains() {
     fi
 }
 
+omits() {
+    if [ ! -f "$DIST/$1" ]; then
+        fail "$1 is missing, cannot check that it omits '$2'"
+    elif grep -qF "$2" "$DIST/$1"; then
+        fail "$1 contains '$2' but should not"
+    else
+        pass "$1 omits '$2'"
+    fi
+}
+
 missing() {
     if [ -e "$DIST/$1" ]; then fail "$1 was built but should not exist"; else pass "$1 not built"; fi
 }
@@ -47,6 +57,12 @@ for page in \
     robots.txt \
     rss.xml \
     sitemap-index.xml \
+    sitemap-0.xml \
+    favicon.svg \
+    favicon.ico \
+    favicon-96.png \
+    apple-touch-icon.png \
+    site.webmanifest \
     blog/index.html \
     blog/js-dice/index.html \
     projects/index.html \
@@ -72,6 +88,58 @@ contains index.html 'property="og:image:height" content="630"'
 contains index.html 'property="twitter:card" content="summary_large_image"'
 contains blog/js-dice/index.html 'rel="canonical" href="https://bencrane.net/blog/js-dice/"'
 contains robots.txt 'Sitemap: https://bencrane.net/sitemap-index.xml'
+
+# The sitemap is the only place a crawler learns a page changed. @astrojs/sitemap
+# derives the URL list from real build output; astro.config's serialize() attaches
+# lastmod from frontmatter via src/utils/content-lastmod.ts. That module maps URLs by
+# filename, so a renamed or non-slug-cased content file silently loses its lastmod --
+# the blanket check at the end of this section is what catches it.
+#
+# sitemap-0.xml is written as a single line with no whitespace between tags, so a URL
+# and its lastmod can be asserted as one fixed string. The `sitemap` package re-parses
+# and normalises the date we supply, so YYYY-MM-DD comes back as a full ISO instant --
+# match the date prefix, not a closing </lastmod>.
+echo "- sitemap"
+contains sitemap-index.xml '<loc>https://bencrane.net/sitemap-0.xml</loc>'
+contains sitemap-0.xml '<loc>https://bencrane.net/contact/</loc>'
+contains sitemap-0.xml '<loc>https://bencrane.net/tags/javascript/</loc>'
+contains sitemap-0.xml '<loc>https://bencrane.net/blog/js-dice/</loc><lastmod>2019-10-06'
+contains sitemap-0.xml '<loc>https://bencrane.net/projects/animals-and-amplifiers/</loc><lastmod>2024-01-02'
+# Listing pages are as fresh as the newest thing they list.
+contains sitemap-0.xml '<loc>https://bencrane.net/blog/</loc><lastmod>2019-10-06'
+
+# 404 and non-HTML endpoints are excluded by the integration, not by a `filter`.
+# Asserting it means a future `filter` cannot quietly start publishing them.
+omits sitemap-0.xml 'https://bencrane.net/404'
+omits sitemap-0.xml 'rss.xml'
+
+# Drafts generate no page, so they cannot reach the sitemap -- unless a listing page
+# starts calling getCollection() directly.
+omits sitemap-0.xml 'ynab-dashboard'
+omits sitemap-0.xml 'one-database-per-tenant'
+
+# Every /blog/<slug>/ and /projects/<slug>/ entry must carry a lastmod. Unlike the
+# assertions above this keeps working as posts are added: split the single-line XML on
+# </url>, then look for a <loc> that closes its <url> with no <lastmod> in between.
+# ERE (-E) rather than GNU \| so macOS grep agrees.
+if [ ! -f "$DIST/sitemap-0.xml" ]; then
+    # Without this guard the check below reports "ok" for a sitemap that was never
+    # built, which is the one situation it most needs to be loud about.
+    fail "sitemap-0.xml is missing, cannot check lastmod coverage"
+else
+    no_lastmod=$(sed 's|</url>|</url>\
+|g' "$DIST/sitemap-0.xml" | grep -Ec '<loc>https://bencrane\.net/(blog|projects)/[a-z0-9/-]+/</loc></url>') || no_lastmod=0
+    if [ "$no_lastmod" -eq 0 ]; then
+        pass "every blog/project URL carries a lastmod"
+    else
+        fail "$no_lastmod blog/project URL(s) in sitemap-0.xml have no lastmod"
+    fi
+fi
+
+echo "- icons"
+contains index.html 'rel="apple-touch-icon"'
+contains index.html 'rel="manifest"'
+contains index.html 'name="theme-color"'
 
 echo "- feed"
 contains rss.xml '<pubDate>Sun, 06 Oct 2019'

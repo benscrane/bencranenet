@@ -8,7 +8,8 @@
  * installed, so a <text> version would silently fall back to Georgia.
  *
  * Usage: npm run favicons
- * Requires `sharp`, which Astro already installs for image optimization.
+ * Requires `sharp` and `fontkitten`. Both arrive transitively with Astro, but they
+ * are declared in devDependencies so an Astro bump cannot silently break this.
  */
 import { create } from 'fontkitten';
 import sharp from 'sharp';
@@ -56,14 +57,48 @@ const svg = (radius) =>
 
 writeFileSync(out('favicon.svg'), svg(RADIUS));
 
-const png = (source, size, name) =>
-    sharp(Buffer.from(source), { density: 384 }).resize(size, size).png({ compressionLevel: 9 }).toFile(out(name));
+const pngBuffer = (source, size) => sharp(Buffer.from(source), { density: 384 }).resize(size, size).png({ compressionLevel: 9 }).toBuffer();
+
+const png = async (source, size, name) => writeFileSync(out(name), await pngBuffer(source, size));
+
+/**
+ * Assembles a PNG-format .ico. sharp cannot write ICO, but the container is only a
+ * 6-byte header plus one 16-byte directory entry per image, and every browser since
+ * IE11 reads PNG-compressed entries — so the PNGs sharp already produces embed
+ * verbatim. /favicon.ico is still requested unconditionally by browsers, feed readers
+ * and link scrapers regardless of what the <link> tags say.
+ *
+ * @param {{ size: number, data: Buffer }[]} images
+ */
+function ico(images) {
+    const header = Buffer.alloc(6);
+    header.writeUInt16LE(1, 2); // type: 1 = icon
+    header.writeUInt16LE(images.length, 4);
+
+    let offset = header.length + images.length * 16;
+    const entries = images.map(({ size, data }) => {
+        const entry = Buffer.alloc(16);
+        entry.writeUInt8(size, 0); // width; 0 would mean 256
+        entry.writeUInt8(size, 1); // height
+        entry.writeUInt16LE(1, 4); // colour planes
+        entry.writeUInt16LE(32, 6); // bits per pixel
+        entry.writeUInt32LE(data.length, 8);
+        entry.writeUInt32LE(offset, 12);
+        offset += data.length;
+        return entry;
+    });
+
+    return Buffer.concat([header, ...entries, ...images.map((image) => image.data)]);
+}
 
 await Promise.all([
     png(svg(RADIUS), 96, 'favicon-96.png'),
     // iOS masks the home-screen icon itself; a pre-rounded source would leave
     // transparent corners that render as black behind the mask.
-    png(svg(0), 180, 'apple-touch-icon.png')
+    png(svg(0), 180, 'apple-touch-icon.png'),
+    Promise.all([16, 32, 48].map(async (size) => ({ size, data: await pngBuffer(svg(RADIUS), size) }))).then((images) =>
+        writeFileSync(out('favicon.ico'), ico(images))
+    )
 ]);
 
-console.log('Wrote favicon.svg, favicon-96.png, apple-touch-icon.png');
+console.log('Wrote favicon.svg, favicon.ico, favicon-96.png, apple-touch-icon.png');
