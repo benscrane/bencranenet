@@ -41,6 +41,10 @@ const projects = defineCollection({
         title: z.string(),
         description: z.string().optional(),
         publishDate: z.coerce.date(),
+        // Mirrors the blog schema. The sitemap reads updatedDate off raw frontmatter,
+        // so without this a project could set it, have <lastmod> honour it, and have
+        // zod silently strip it everywhere else.
+        updatedDate: z.coerce.date().optional(),
         isFeatured: z.boolean().default(false),
         draft: z.boolean().default(false),
         seo: seoSchema.optional()
