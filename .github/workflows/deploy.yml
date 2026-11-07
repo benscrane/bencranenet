@@ -19,9 +19,9 @@ jobs:
       deployments: write
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
@@ -44,11 +44,19 @@ jobs:
       - name: Smoke test build output
         run: npm run smoke
 
+      # Deliberately not benscrane/platform's shared deploy-worker action: that
+      # one runs `wrangler deploy`, polls /api/health and `wrangler rollback`s —
+      # all Workers operations. This is a static site on Cloudflare Pages, which
+      # keeps every deployment and rolls back from the dashboard. If the site
+      # moves to Workers static assets, switch to the shared action (it will
+      # need a health route that reports the release). Keep the wrangler-action
+      # pin in step with the shared action's.
+      #
       # Pull requests build only — never deploy. Without this guard, adding the
       # pull_request trigger above would publish every PR to production.
       - name: Deploy to Cloudflare Pages
         if: github.event_name != 'pull_request'
-        uses: cloudflare/wrangler-action@v4
+        uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # v4.1.3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
